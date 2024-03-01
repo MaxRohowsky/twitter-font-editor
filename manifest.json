@@ -1,0 +1,44 @@
+{
+  "name": "X-Post-Editor",
+  "description": "",
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "action": {},
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "tabs"
+  ],
+  "host_permissions": [
+		"*://*/*"
+	],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "jquery.js",
+        "content.js"
+      ],
+      "css": [
+        "style.css"
+      ],
+      "matches": [
+        "*://*.twitter.com/*",
+        "*://*.x.com/*"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
