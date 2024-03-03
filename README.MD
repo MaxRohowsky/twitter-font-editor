@@ -17,7 +17,7 @@ Made by [maxontech](https://twitter.com/max_on_tech)
 ## Table of contents
 
 - [Features](#features)
-- [Opening Linkedin Font Editor](#opening-linkedin-font-editor)
+- [Opening the Extension](#opening-the-extension)
 - [List of commands](#list-of-commands)
 - [Installing locally on Chrome](#installing-on-chrome)
 - [Libraries](#libraries-used)
@@ -28,7 +28,7 @@ Made by [maxontech](https://twitter.com/max_on_tech)
 When you make a new LinkedIn post, you'll see three icons (**B**, *I*, <ins>U</ins>) at the top of the text field.
 Simply highlight the text you want to chage and click on the corresponding edit button.
 
-## Opening Linkedin Font Editor
+## Opening the Extension
 
 Simply install the extension. It's enabled by default whenever you create a new post.
 
