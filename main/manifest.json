@@ -26,7 +26,8 @@
       ],
       "matches": [
         "*://*.linkedin.com/*"
-      ]
+      ], 
+      "run_at": "document_start"
     }
   ],
  
