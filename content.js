@@ -74,140 +74,121 @@ async function newPostLoaded() {
 
 }
 
+function boldBtnHandler(event) {
+      //let element = document.querySelector('.r-1niwhzg.r-17gur6a.r-1yadl64.r-deolkf.r-homxoj.r-poiln3.r-7cikom.r-1ny4l3l.r-1ttztb7.r-t60dpp');
+      //element.removeEventListener('click', Un);
+
+      //event.stopImmediatePropagation();
 
 
+      console.log("boldbuttons");
+      let selectionObj = window.getSelection();
 
-function injectEditor() {
-      let selectionObj;
-      let range;
-      let str
+      let range = selectionObj.getRangeAt(0);
 
-      console.log("injecting editor");
+      let str = range.toString();
+      let strBold = toBoldUnicode(str);
 
-      const element = $(' div .DraftEditor-root');
+      // get selection start and end
+      //let startOffset = range.startOffset;
+      //let endOffset = range.endOffset;
+
+
+      //var element = $('.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr > span > span');
+      //console.log(element);
+      //console.log(element.textContent);
+      //element.html("hiei");
+
+      let element = $('[data-testid="tweetTextarea_0"]');
       console.log(element);
+      console.log(element[0]);
 
+
+      element[0].outerText = "hiei";
+      //console.log(element);
+      //$('.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr > span > span').text('Your new text');
+      //element.html("hiei");
+      //$('.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr > span > span').text('Your new text');
+      //console.log($('.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr > span > span'));
+      //console.log(element);
+      //console.log(element[0].innerText);
+
+      //elText = elText.substring(0, startOffset) + strBold + elText.substring(endOffset, elText.length);
+      //element[0].innerText = "hiei"
+
+      //textNode.deleteData(startOffset, str.length);
+
+      //let boldText = toBoldUnicode(str);
+
+      //textNode.insertData(startOffset, boldText);
+}
+
+function buildEditor(element) {
       let container = $('<div>').attr('id', 'x-post-editor-container');
 
-      let boldbutton = $('<div>bold</div>')
+      let boldBtn = $('<div>bold</div>')
             .attr('id', 'x-post-editor-bold')
             .addClass('x-post-editor-button')
-            .html(svgBold);
+            .html(svgBold)
+            .on('click', boldBtnHandler);
 
-      let italicbutton = $('<div>italic</div>')
+      let italicBtn = $('<div>italic</div>')
             .attr('id', 'x-post-editor-italic')
             .addClass('x-post-editor-button')
             .html(svgItalic);
 
-
-      let underlinebutton = $('<div>underline</div>')
+      let underlineBtn = $('<div>underline</div>')
             .attr('id', 'x-post-editor-underline')
             .addClass('x-post-editor-button')
             .html(svgUnderline);
 
-      container.append(boldbutton, italicbutton, underlinebutton);
+      container.append(boldBtn, italicBtn, underlineBtn);
+
       element.append(container);
+}
 
 
 
+/* Checks for the "DraftEditor-root" Element repeatedly and injects the buttons once found*/
+function injectEditor() {
+      let checkElementInterval = setInterval(function () {
+            let element = $('div .DraftEditor-root');
+            if (element.length > 0) {
+                  //console.log("DraftEditor-root found");
+                  //console.log(element);
+                  buildEditor(element);
+                  // Clear the interval once the element is found
+                  clearInterval(checkElementInterval);
+            } else {
+                  //console.log("DraftEditor-root not found");
+            }
+      }, 10);
+
+
+      /*$(document).on('keydown', function (event) {
+            event.preventDefault();
+            console.log(event.originalEvent.key);
+            
+            let selectionObj = window.getSelection();
+            let range = selectionObj.getRangeAt(0);
+            console.log( $('.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr > span > br'));
+            console.log( $('.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr > span > span'));
+
+            //$('div[data-offset-key="7o7mk-0-0"] > span[data-text="true"]')
+            $('.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr > span > br').replaceWith('<span data-text="true">hello</span>');
+            //range.insertNode(document.createTextNode("Keypress"));
+
+            //range.startContainer.insertData(range.startOffset, "Keypress");
+            //range.insertNode(document.insertData("Keypress"));
+      });*/
+      /*
       $(document.body).off('mouseup').on('mouseup', (event) => {
-
-
             selectionObj = window.getSelection();
-
-
             if (selectionObj.rangeCount > 0) {
                   console.log(selectionObj);
                   console.log(selectionObj.getRangeAt(0));
-
-
             }
-
-            //let s = object.anchorOffset;
-            //let e = object.focusOffset;
-
-            //selectedText = object.anchorNode.data.substring(s, e);
-            //console.log(object);
-
-            //range = object.getRangeAt(0);
-            //console.log(object.getRangeAt(0));
-
-            //str = range.toString();
-            //event.stopPropagation()
-
-      });
-
-
-
-      //boldbutton.on('click', (event) => {
-      /*
-      range.deleteContents();
-
-      let boldText = toBoldUnicode(str);
-
-      range.insertNode(document.createTextNode(boldText));
-
-      event.stopPropagation()*/
-      //});
-
-
-      /*
-      italicbutton.on('click', (event) => {
-
-            range.deleteContents();
-
-            let italicText = toItalicUnicode(str);
-
-            range.insertNode(document.createTextNode(italicText));
-
-            event.stopPropagation()
-      });
-
-      underlinebutton.on('click', (event) => {
-            range.deleteContents();
-
-            let underlineText = toUnderlineUnicode(str);
-
-            range.insertNode(document.createTextNode(underlineText));
-
-            event.stopPropagation()
       });*/
-
-
-
-
-      /*
-      button.click((event) => {
-
-
-            let selection = window.getSelection();
-
-            console.log(selection);
-            //console.log(selection.data);
-            console.log(selection.anchorNode.data);
-
-            let range = selection.getRangeAt(0);
-
-            range.deleteContents();
-
-            let text = selection.anchorNode.data;
-
-            let boldText = toBoldUnicode(text);
-
-
-
-            range.insertNode(document.createTextNode(boldText));
-
-
-
-      });*/
-
-
-
-
-
-
-      // Get the current selection
 
 
 }
