@@ -24,7 +24,8 @@ Made by [maxontech](https://twitter.com/max_on_tech)
 
 ## Features
 
-When you make a new LinkedIn post, you'll see 
+When you make a new LinkedIn post, you'll see three icons (**B**, *I*, <u>U</u>) at the top of the text field.
+Simply highlight the text you want to chage and click on the corresponding edit button.
 
 ## Opening Click to Copy
 
