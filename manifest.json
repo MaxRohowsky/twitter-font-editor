@@ -25,10 +25,8 @@
         "style.css"
       ],
       "matches": [
-        "*://*.twitter.com/*",
-        "*://*.x.com/*"
-      ],
-      "run_at": "document_end"
+        "<all_urls>"
+      ]
     }
   ],
  

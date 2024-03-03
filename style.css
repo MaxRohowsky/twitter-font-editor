@@ -1,29 +1,29 @@
-#x-post-editor-container{
+#linkedin-post-editor-container{
     display: flex;
     flex-direction: row;
 }
 
-.x-post-editor-button{
+.linkedin-post-editor-button{
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 100px;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     background-color: rgba(255, 255, 255, 0);
     border: none;
 }
 
-#x-post-editor-italic:hover,
-#x-post-editor-bold:hover,
-#x-post-editor-underline:hover{
+#linkedin-post-editor-italic:hover,
+#linkedin-post-editor-bold:hover,
+#linkedin-post-editor-underline:hover{
     background-color: rgba(29, 155, 240, 0.1);
     cursor: pointer;
 }
 
 
-.x-post-editor-icon{
-    width: 16px;
-    height: 16px;
-    fill: rgb(29, 155, 240);
+.linkedin-post-editor-icon{
+    width: 25px;
+    height: 25px;
+    fill: rgba(0, 0, 0, 0.6);
 }
