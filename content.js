@@ -1,3 +1,6 @@
+const svgBold = '<svg class="x-post-editor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M0 64C0 46.3 14.3 32 32 32H80 96 224c70.7 0 128 57.3 128 128c0 31.3-11.3 60.1-30 82.3c37.1 22.4 62 63.1 62 109.7c0 70.7-57.3 128-128 128H96 80 32c-17.7 0-32-14.3-32-32s14.3-32 32-32H48V256 96H32C14.3 96 0 81.7 0 64zM224 224c35.3 0 64-28.7 64-64s-28.7-64-64-64H112V224H224zM112 288V416H256c35.3 0 64-28.7 64-64s-28.7-64-64-64H224 112z"/></svg>'
+const svgItalic = '<svg class="x-post-editor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M128 64c0-17.7 14.3-32 32-32H352c17.7 0 32 14.3 32 32s-14.3 32-32 32H293.3L160 416h64c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H90.7L224 96H160c-17.7 0-32-14.3-32-32z"/></svg>'
+const svgUnderline = '<svg class="x-post-editor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M16 64c0-17.7 14.3-32 32-32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H128V224c0 53 43 96 96 96s96-43 96-96V96H304c-17.7 0-32-14.3-32-32s14.3-32 32-32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H384V224c0 88.4-71.6 160-160 160s-160-71.6-160-160V96H48C30.3 96 16 81.7 16 64zM0 448c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32z"/></svg>'
 
 function toBoldUnicode(str) {
       const boldMap = {
@@ -29,18 +32,17 @@ function toItalicUnicode(str) {
 
 function toBoldItalicUnicode(str) {
       const boldItalicMap = {
-          'a': '𝒂', 'b': '𝒃', 'c': '𝒄', 'd': '𝒅', 'e': '𝒆', 'f': '𝒇', 'g': '𝒈', 'h': '𝒉', 'i': '𝒊', 'j': '𝒋', 'k': '𝒌', 'l': '𝒍', 'm': '𝒎', 'n': '𝒏', 'o': '𝒐', 'p': '𝒑', 'q': '𝒒', 'r': '𝒓', 's': '𝒔', 't': '𝒕', 'u': '𝒖', 'v': '𝒗', 'w': '𝒘', 'x': '𝒙', 'y': '𝒚', 'z': '𝒛',
-          'A': '𝑨', 'B': '𝑩', 'C': '𝑪', 'D': '𝑫', 'E': '𝑬', 'F': '𝑭', 'G': '𝑮', 'H': '𝑯', 'I': '𝑰', 'J': '𝑱', 'K': '𝑲', 'L': '𝑳', 'M': '𝑴', 'N': '𝑵', 'O': '𝑶', 'P': '𝑷', 'Q': '𝑸', 'R': '𝑹', 'S': '𝑺', 'T': '𝑻', 'U': '𝑼', 'V': '𝑽', 'W': '𝑾', 'X': '𝑿', 'Y': '𝒀', 'Z': '𝒁',
-          '0': '𝟎', '1': '𝟏', '2': '𝟐', '3': '𝟑', '4': '𝟒', '5': '𝟓', '6': '𝟔', '7': '𝟕', '8': '𝟖', '9': '𝟗'
+            'a': '𝒂', 'b': '𝒃', 'c': '𝒄', 'd': '𝒅', 'e': '𝒆', 'f': '𝒇', 'g': '𝒈', 'h': '𝒉', 'i': '𝒊', 'j': '𝒋', 'k': '𝒌', 'l': '𝒍', 'm': '𝒎', 'n': '𝒏', 'o': '𝒐', 'p': '𝒑', 'q': '𝒒', 'r': '𝒓', 's': '𝒔', 't': '𝒕', 'u': '𝒖', 'v': '𝒗', 'w': '𝒘', 'x': '𝒙', 'y': '𝒚', 'z': '𝒛',
+            'A': '𝑨', 'B': '𝑩', 'C': '𝑪', 'D': '𝑫', 'E': '𝑬', 'F': '𝑭', 'G': '𝑮', 'H': '𝑯', 'I': '𝑰', 'J': '𝑱', 'K': '𝑲', 'L': '𝑳', 'M': '𝑴', 'N': '𝑵', 'O': '𝑶', 'P': '𝑷', 'Q': '𝑸', 'R': '𝑹', 'S': '𝑺', 'T': '𝑻', 'U': '𝑼', 'V': '𝑽', 'W': '𝑾', 'X': '𝑿', 'Y': '𝒀', 'Z': '𝒁',
+            '0': '𝟎', '1': '𝟏', '2': '𝟐', '3': '𝟑', '4': '𝟒', '5': '𝟓', '6': '𝟔', '7': '𝟕', '8': '𝟖', '9': '𝟗'
       };
-  
+
       let boldItalicStr = '';
       for (let char of str) {
-          boldItalicStr += boldItalicMap[char] || char;
+            boldItalicStr += boldItalicMap[char] || char;
       }
       return boldItalicStr;
-  }
-
+}
 
 
 function toUnderlineUnicode(str) {
@@ -51,32 +53,39 @@ function toUnderlineUnicode(str) {
       return underlineStr;
 }
 
-function applyBoldText() {
-      let selection = window.getSelection();
+
+chrome.runtime.onMessage.addListener((message) => {
+      if (message.request === "active") {
+            console.log("active" + message.request);
+            newPostLoaded();
+      }
+});
 
 
-      let range = selection.getRangeAt(0);
 
-      range.deleteContents();
 
-      range.insertNode(document.createTextNode("Hello, world!"));
+async function newPostLoaded() {
+      let isInjected = $(' div #x-post-editor-container').length > 0;
+      console.log("isInjected " + isInjected);
 
+      if (!isInjected) {
+            injectEditor();
+      }
 
 }
 
 
 
-$(function () {
-      let svgBold = '<svg class="x-post-editor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M0 64C0 46.3 14.3 32 32 32H80 96 224c70.7 0 128 57.3 128 128c0 31.3-11.3 60.1-30 82.3c37.1 22.4 62 63.1 62 109.7c0 70.7-57.3 128-128 128H96 80 32c-17.7 0-32-14.3-32-32s14.3-32 32-32H48V256 96H32C14.3 96 0 81.7 0 64zM224 224c35.3 0 64-28.7 64-64s-28.7-64-64-64H112V224H224zM112 288V416H256c35.3 0 64-28.7 64-64s-28.7-64-64-64H224 112z"/></svg>'
 
-      let svgItalic = '<svg class="x-post-editor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M128 64c0-17.7 14.3-32 32-32H352c17.7 0 32 14.3 32 32s-14.3 32-32 32H293.3L160 416h64c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H90.7L224 96H160c-17.7 0-32-14.3-32-32z"/></svg>'
+function injectEditor() {
+      let selectionObj;
+      let range;
+      let str
 
-      let svgUnderline = '<svg class="x-post-editor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M16 64c0-17.7 14.3-32 32-32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H128V224c0 53 43 96 96 96s96-43 96-96V96H304c-17.7 0-32-14.3-32-32s14.3-32 32-32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H384V224c0 88.4-71.6 160-160 160s-160-71.6-160-160V96H48C30.3 96 16 81.7 16 64zM0 448c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32z"/></svg>'
+      console.log("injecting editor");
 
-
-      //let element = $('div[role="tablist"][data-testid="ScrollSnap-List"]');
-      let element = $(' div .DraftEditor-root');
-      //let element = $('[data-testid="tweetTextarea_0RichTextInputContainer"]');
+      const element = $(' div .DraftEditor-root');
+      console.log(element);
 
       let container = $('<div>').attr('id', 'x-post-editor-container');
 
@@ -99,51 +108,57 @@ $(function () {
       container.append(boldbutton, italicbutton, underlinebutton);
       element.append(container);
 
-      let object;
-      let selectedText;
-      let range;
-      let str
-
-      $(document.body).on('mouseup', () => {
-            object = window.getSelection();
-
-            console.log(object);
 
 
-            let s = object.anchorOffset;
-            let e = object.focusOffset;
+      $(document.body).off('mouseup').on('mouseup', (event) => {
+
+
+            selectionObj = window.getSelection();
+
+
+            if (selectionObj.rangeCount > 0) {
+                  console.log(selectionObj);
+                  console.log(selectionObj.getRangeAt(0));
+
+
+            }
+
+            //let s = object.anchorOffset;
+            //let e = object.focusOffset;
 
             //selectedText = object.anchorNode.data.substring(s, e);
             //console.log(object);
 
-            range = object.getRangeAt(0);
-            console.log(object.getRangeAt(0));
+            //range = object.getRangeAt(0);
+            //console.log(object.getRangeAt(0));
 
-            str = range.toString();
-
+            //str = range.toString();
+            //event.stopPropagation()
 
       });
 
 
+
+      //boldbutton.on('click', (event) => {
+      /*
+      range.deleteContents();
+
+      let boldText = toBoldUnicode(str);
+
+      range.insertNode(document.createTextNode(boldText));
+
+      event.stopPropagation()*/
+      //});
+
+
+      /*
       italicbutton.on('click', (event) => {
 
             range.deleteContents();
 
-            //let boldText = toBoldUnicode(str);
             let italicText = toItalicUnicode(str);
 
             range.insertNode(document.createTextNode(italicText));
-
-            event.stopPropagation()
-      });
-
-
-      boldbutton.on('click', (event) => {
-            range.deleteContents();
-
-            let boldText = toBoldUnicode(str);
-
-            range.insertNode(document.createTextNode(boldText));
 
             event.stopPropagation()
       });
@@ -156,7 +171,10 @@ $(function () {
             range.insertNode(document.createTextNode(underlineText));
 
             event.stopPropagation()
-      });
+      });*/
+
+
+
 
       /*
       button.click((event) => {
@@ -192,6 +210,6 @@ $(function () {
       // Get the current selection
 
 
-});
+}
 
 
