@@ -17,7 +17,7 @@ Made by [maxontech](https://twitter.com/max_on_tech)
 ## Table of contents
 
 - [Features](#features)
-- [Opening Click to Copy](#opening-click-to-copy)
+- [Opening Linkedin Font Editor](#opening-linkedin-font-editor)
 - [List of commands](#list-of-commands)
 - [Installing locally on Chrome](#installing-on-chrome)
 - [Libraries](#libraries-used)
@@ -28,9 +28,9 @@ Made by [maxontech](https://twitter.com/max_on_tech)
 When you make a new LinkedIn post, you'll see three icons (**B**, *I*, <ins>U</ins>) at the top of the text field.
 Simply highlight the text you want to chage and click on the corresponding edit button.
 
-## Opening Click to Copy
+## Opening Linkedin Font Editor
 
-To open Click to Copy, you can click on the extension icon in the toolbar.
+Simply install the extension. It's enabled by default whenever you create a new post.
 
 ## Installing locally on Chrome
 You can run the extension locally without having to install it from the Chrome Store.
