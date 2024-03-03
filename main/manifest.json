@@ -1,5 +1,5 @@
 {
-  "name": "X-Post-Editor",
+  "name": "LinkedIn-Post-Editor",
   "description": "",
   "manifest_version": 3,
   "version": "1.0.0",
@@ -25,7 +25,7 @@
         "style.css"
       ],
       "matches": [
-        "<all_urls>"
+        "*://*.linkedin.com/*"
       ]
     }
   ],
@@ -36,7 +36,7 @@
         "assets/*"
       ],
       "matches": [
-        "<all_urls>"
+        "*://*.linkedin.com/*"
       ]
     }
   ]
