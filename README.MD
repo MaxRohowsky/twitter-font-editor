@@ -4,10 +4,10 @@
 <br>
 <br>
 
-Use **𝗕𝗼𝗹𝗱**, *𝐼𝑡𝑎𝑙𝑖𝑐*, and _Underlined_ Font to make your LinkedIn Posts stand out🔥
+Use **𝗕𝗼𝗹𝗱**, *𝐼𝑡𝑎𝑙𝑖𝑐*, and <ins>Underlined</ins> Font to make your LinkedIn Posts stand out🔥
 
 "LinkedIn Font Editor" is a Chrome Browser Extension that allows you to use unicode characters in 
-your LinkedIn posts to make text **𝗕𝗼𝗹𝗱**, *𝐼𝑡𝑎𝑙𝑖𝑐*, and <u>Underlined</u>.
+your LinkedIn posts to make text **𝗕𝗼𝗹𝗱**, *𝐼𝑡𝑎𝑙𝑖𝑐*, and <ins>Underlined</ins>.
 
 
 👉 Get it now [for Chrome](https://chromewebstore.google.com) 
@@ -25,7 +25,7 @@ Made by [maxontech](https://twitter.com/max_on_tech)
 
 ## Features
 
-When you make a new LinkedIn post, you'll see three icons (**B**, *I*, _U_) at the top of the text field.
+When you make a new LinkedIn post, you'll see three icons (**B**, *I*, <ins>U</ins>) at the top of the text field.
 Simply highlight the text you want to chage and click on the corresponding edit button.
 
 ## Opening Click to Copy
