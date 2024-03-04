@@ -10,7 +10,7 @@ Use **𝗕𝗼𝗹𝗱**, *𝐼𝑡𝑎𝑙𝑖𝑐*, and <ins>Underlined</ins> 
 your LinkedIn posts to make text **𝗕𝗼𝗹𝗱**, *𝐼𝑡𝑎𝑙𝑖𝑐*, and <ins>Underlined</ins>.
 
 
-👉 Get it now [for Chrome](https://chromewebstore.google.com) 
+👉 Get it now [for Chrome](https://chromewebstore.google.com/detail/djkclikbnokagbeciclfpngfeclcokob) 
 
 Made by [maxontech](https://twitter.com/max_on_tech)
 
@@ -46,4 +46,4 @@ You can run the extension locally without having to install it from the Chrome S
 
 ## Contact
 
-Feel free to reach out to me on Twitter: [on Twitter](https://twitter.com/max_on_tech) if you have any questions or feedback! Hope you find this useful!
+Feel free to reach out to me [on Twitter](https://twitter.com/max_on_tech) if you have any questions or feedback! Hope you find this useful!
