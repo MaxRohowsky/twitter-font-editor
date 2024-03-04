@@ -1,6 +1,6 @@
 # LinkedIn Font Editor
 
-![Preview](preview.gif)
+![Preview](preview.png)
 <br>
 <br>
 
