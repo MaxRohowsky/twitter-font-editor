@@ -10,7 +10,7 @@ Use **𝗕𝗼𝗹𝗱**, *𝐼𝑡𝑎𝑙𝑖𝑐*, and <ins>Underlined</ins> 
 your LinkedIn posts to make text **𝗕𝗼𝗹𝗱**, *𝐼𝑡𝑎𝑙𝑖𝑐*, and <ins>Underlined</ins>.
 
 
-👉 Get it now [for Chrome](https://chromewebstore.google.com/detail/djkclikbnokagbeciclfpngfeclcokob) 
+👉 Get it now [for Chrome](https://chromewebstore.google.com/detail/linkedin-post-bold-italic/djkclikbnokagbeciclfpngfeclcokob) 
 
 Made by [maxontech](https://twitter.com/max_on_tech)
 
