@@ -1,3 +1,17 @@
+(() => {
+      console.log("Hello from content.js");
+})();
+
+//let element = $('div[aria-labelledby="modal-header"][role="dialog"]');
+
+function onPageLoad() {
+      // Call the function to inject the button when the page is loaded
+      console.log("Page loaded");
+  }
+  
+  // Add event listener for when the DOM content is loaded
+document.addEventListener('DOMContentLoaded', onPageLoad);
+
 const svgBold = '<svg class="linkedin-post-editor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M0 64C0 46.3 14.3 32 32 32H80 96 224c70.7 0 128 57.3 128 128c0 31.3-11.3 60.1-30 82.3c37.1 22.4 62 63.1 62 109.7c0 70.7-57.3 128-128 128H96 80 32c-17.7 0-32-14.3-32-32s14.3-32 32-32H48V256 96H32C14.3 96 0 81.7 0 64zM224 224c35.3 0 64-28.7 64-64s-28.7-64-64-64H112V224H224zM112 288V416H256c35.3 0 64-28.7 64-64s-28.7-64-64-64H224 112z"/></svg>'
 const svgItalic = '<svg class="linkedin-post-editor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M128 64c0-17.7 14.3-32 32-32H352c17.7 0 32 14.3 32 32s-14.3 32-32 32H293.3L160 416h64c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H90.7L224 96H160c-17.7 0-32-14.3-32-32z"/></svg>'
 const svgUnderline = '<svg class="linkedin-post-editor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M16 64c0-17.7 14.3-32 32-32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H128V224c0 53 43 96 96 96s96-43 96-96V96H304c-17.7 0-32-14.3-32-32s14.3-32 32-32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H384V224c0 88.4-71.6 160-160 160s-160-71.6-160-160V96H48C30.3 96 16 81.7 16 64zM0 448c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32z"/></svg>'
@@ -75,57 +89,91 @@ function toUnderlineUnicode(str) {
 
 // Listen for messages from the popup
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+      if (request.message === "check") {
+            sendResponse({ status: "Yes, I'm here" });
+      }
+      //console.log("Message received from popup");
+      console.log("hi");
       if (message.request === "active") {
+            console.log("Message received from popup -> injecting");
             newPostLoaded();
-            sendResponse({status: "success"});
+            sendResponse({ status: "success" });
       }
 });
 
 
-async function newPostLoaded() {
-      let isInjected = $(' div #linkedin-post-editor-container').length > 0;
-
-      if (!isInjected) {
+function newPostLoaded() {
+      let element = $('div[role="tablist"]');
+      let container = $('#linkedin-post-editor-container');
+      //let isInjected = $('div.css-175oi2r.r-1wbh5a2.r-htvplk.r-1udh08x.r-1867qdf.r-rsyp9y.r-1pjcn9w.r-1potc6q').length > 0;
+      console.log(element);
+      console.log(!container.length);
+      if (element.length && !container.length) {
+            console.log("Injection crit met");
             injectEditor();
+      }
+      else {
+            console.log("Injection crit not met");
       }
 
 }
 
 function boldBtnHandler() {
+      console.log("Bold button clicked");
+      let boldText
 
-      // Only Bold selected text
-      if (isBoldUnicode(selectionObj.toString())) {
-            let regularText = '';
-            for (let char of selectionObj.toString()) {
-                  regularText += boldToNormalMap[char] || char;
-            }
-            range.deleteContents();
-            range.insertNode(document.createTextNode(regularText));
-            return;
-      }
 
-      // Mix of bold, italic, and non-bold text
-      if (selectionObj.toString().length > 1) {
-            // Make all text regular
-            let regularText = '';
-            for (let char of selectionObj.toString()) {
-                  regularText += boldToNormalMap[char] || italicToNormalMap[char] || char;
-            }
+      console.log(selectionObj.toString());
+      console.log(selectionObj);
+      console.log(selectionObj.anchorNode.data);
 
-            // Make all text bold
-            let boldText = toBoldUnicode(regularText);
-            range.deleteContents();
-            range.insertNode(document.createTextNode(boldText));
-            return;
-      }
+      //boldText = toBoldUnicode(selectionObj.anchorNode.data);
+      boldText = toBoldUnicode(selectionObj.toString());
+      console.log("boldText");
+      console.log(toBoldUnicode(selectionObj.toString()));
+      console.log("boldText2");
+      //console.log(toBoldUnicode(selectionObj.anchorNode.data));
 
-      // Only non-bold text
       if (selectionObj.toString().length === 1) {
-            let boldText = toBoldUnicode(selectionObj.toString());
-            range.deleteContents();
-            range.insertNode(document.createTextNode(boldText));
-            return;
+            //boldText = toBoldUnicode(selectionObj.toString());
+            //range.deleteContents();
+            //range.insertNode(document.createTextNode(boldText));
+
+
+
       }
+
+      //document.execCommand('delete', false, null);
+      document.execCommand('insertText', false, boldText);
+
+
+
+      /*
+      console.log(document.activeElement.nodeName);
+      console.log(document.activeElement.isContentEditable);
+      //document.activeElement.deleteContents;
+
+      const replyNode = document.createTextNode(`HI𝑒`);
+      const selection = window.getSelection();
+      
+
+      if (selection.rangeCount === 0) {
+            selection.addRange(document.createRange());
+            selection.getRangeAt(0).collapse(activeElement, 1);
+      }
+
+      const rangex = selection.getRangeAt(0);
+      rangex.collapse(false);
+
+      //Insert reply
+      rangex.insertNode(replyNode);
+
+      // Move the cursor to the end
+      selection.collapse(replyNode, replyNode.length);*/
+
+      //let evt = new Event('click', { bubbles: true });
+      //document.activeElement.dispatchEvent(evt);
+
 }
 
 
@@ -196,13 +244,14 @@ function underlineBtnHandler() {
 
 // Add the UI Elements to the DOM
 function buildEditor(element) {
-      let container = $('<div>').attr('id', 'linkedin-post-editor-container');
+      let container = $('div[role="tablist"]')
+            .attr('id', 'linkedin-post-editor-container');
 
       let boldBtn = $('<div>bold</div>')
             .attr('id', 'linkedin-post-editor-bold')
             .addClass('linkedin-post-editor-button')
             .html(svgBold)
-            .on('mousedown', boldBtnHandler);
+            .on('click.namespace', boldBtnHandler);
 
       let italicBtn = $('<div>italic</div>')
             .attr('id', 'linkedin-post-editor-italic')
@@ -229,28 +278,33 @@ function addEventListener() {
             if (selectionObj.rangeCount > 0) {
                   range = selectionObj.getRangeAt(0);
             }
-            event.preventDefault();
-            event.stopPropagation();
+            //event.preventDefault();
+            //event.stopPropagation();
       });
 }
 
 
-/* Check for the Dom Element repeatedly and inject the buttons once found*/
+/* Inject the buttons*/
+
+
+
 function injectEditor() {
       console.log("injecting editor");
-      setInterval(function () {
-            let element = $('.artdeco-modal__header.ember-view.share-box-v2__modal-redesigned-header');
 
-            if (element.length > 0 && $('#linkedin-post-editor-container').length === 0) {
-                  buildEditor(element);
-                  addEventListener();
-            }
-      }, 2000);
-
-
-
-
-
+      let element = $('div[role="tablist"]');
+      //let element = $('.css-175oi2r.r-13qz1uu');
+      console.log(element);
+      if (element.length > 0) {
+            buildEditor(element);
+            addEventListener();
+      }
 }
+
+
+
+
+
+
+
 
 
