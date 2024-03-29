@@ -5,8 +5,7 @@
   "version": "1.0.1",
   "action": {},
   "permissions": [
-    "tabs",
-    "scripting"
+    "tabs"
   ],
   "host_permissions": ["*://*.twitter.com/*", "*://*.x.com/*"],
   "icons": {
@@ -27,8 +26,8 @@
         "style.css"
       ],
       "matches": [
-        "*://*.twitter.com/compose/post*",
-        "*://*.x.com/compose/post*"
+        "*://*.twitter.com/*",
+        "*://*.x.com/*"
       ], 
       "run_at": "document_end"
     }

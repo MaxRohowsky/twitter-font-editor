@@ -1,29 +1,35 @@
-#linkedin-post-editor-container{
+#twitter-post-editor-container{
     display: flex;
     flex-direction: row;
 }
 
-.linkedin-post-editor-button{
+.twitter-post-editor-button{
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 100px;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     background-color: rgba(255, 255, 255, 0);
     border: none;
+    padding: 2px;
 }
 
-#linkedin-post-editor-italic:hover,
-#linkedin-post-editor-bold:hover,
-#linkedin-post-editor-underline:hover{
+#twitter-post-editor-italic:hover,
+#twitter-post-editor-bold:hover,
+#twitter-post-editor-underline:hover{
     background-color: rgba(29, 155, 240, 0.1);
     cursor: pointer;
 }
 
 
-.linkedin-post-editor-icon{
-    width: 25px;
-    height: 25px;
+.twitter-post-editor-icon{
+    width: 15px;
+    height: 15px;
     fill: rgba(0, 0, 0, 0.6);
+    transition: fill 0.4s ease;
+}
+
+.twitter-post-editor-active svg {
+    fill: rgb(29, 155, 240);
 }
