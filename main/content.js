@@ -2,7 +2,7 @@
 (() => {
 
       // Debug option to toggle console logs
-      let debug = false
+      let debug = true
       if (debug) console.log("Hello from content.js");
 
       // Bold
@@ -62,7 +62,7 @@
                               if (debug) console.log('Element not found');
                               clearInterval(postCount);
                         }
-                  }, 250);
+                  }, 800);
 
             }
       });

@@ -4,9 +4,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
   // If the tab is fully loaded and the URL matches, send a message to the content script
   if (changeInfo.status === 'complete' && tab.url && (tab.url.includes("twitter.com/compose/post") || tab.url.includes("x.com/compose/post"))) {
-    chrome.tabs.sendMessage(tabId, {
-      type: "POST"
-    })
+    chrome.tabs.sendMessage(tabId, {type: "POST"}).catch(error => console.error(`Send Message Error: ${error}`));
   }
 });
 
@@ -19,9 +17,11 @@ chrome.runtime.onInstalled.addListener((object) => {
   const injectIntoTab = (tab) => {
     const scripts = manifest.content_scripts[0].js;
     const s = scripts.length;
+    console.log("Scripts: ", scripts);
 
     const styles = manifest.content_scripts[0].css;
     const st = styles.length;
+    console.log("Styles: ", styles);
 
     for (let i = 0; i < s; i++) {
       chrome.scripting.executeScript({
@@ -37,6 +37,12 @@ chrome.runtime.onInstalled.addListener((object) => {
       });
     }
 
+    setTimeout(() => {
+      if (tab.url && (tab.url.includes("twitter.com/compose/post") || tab.url.includes("x.com/compose/post"))) {
+      chrome.tabs.sendMessage(tab.id, {type: "POST"}).catch(error => console.error(`Send Message Error: ${error}`));
+      }
+
+    }, 4000);
   };
 
   // Get all windows
@@ -56,9 +62,11 @@ chrome.runtime.onInstalled.addListener((object) => {
 
         for (let j = 0; j < t; j++) {
           currentTab = currentWindow.tabs[j];
-
-          if (currentTab.url.includes("twitter.com/compose/post") || currentTab.url.includes("x.com/compose/post")) {
+          console.log("Current Tab: ", currentTab);
+          if (currentTab.url.includes("twitter.com") || currentTab.url.includes("x.com")) {
+            console.log("Injecting into tab: ", currentTab);
             injectIntoTab(currentTab);
+            
           }
         } 
       }
