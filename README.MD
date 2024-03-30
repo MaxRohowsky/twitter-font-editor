@@ -1,3 +1,4 @@
+<!-- omit in toc -->
 # Twitter (X) Font Editor
 
 ![Preview](preview.png)
@@ -14,15 +15,14 @@ your Twitter (X) posts to make text **𝗕𝗼𝗹𝗱**, *𝐼𝑡𝑎𝑙𝑖�
 
 Made by [maxontech](https://twitter.com/max_on_tech)
 
+<!-- omit in toc -->
 ## Table of contents
 
-- [Twitter (X) Font Editor](#twitter-x-font-editor)
-  - [Table of contents](#table-of-contents)
-  - [Features](#features)
-  - [Opening the Extension](#opening-the-extension)
-  - [Installing locally on Chrome](#installing-locally-on-chrome)
-  - [Libraries](#libraries)
-  - [Contact](#contact)
+- [Features](#features)
+- [Opening the Extension](#opening-the-extension)
+- [Installing locally on Chrome](#installing-locally-on-chrome)
+- [Libraries](#libraries)
+- [Contact](#contact)
 
 ## Features
 
