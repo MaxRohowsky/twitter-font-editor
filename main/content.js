@@ -62,7 +62,7 @@
                               if (debug) console.log('Element not found');
                               clearInterval(postCount);
                         }
-                  }, 500);
+                  }, 250);
 
             }
       });
