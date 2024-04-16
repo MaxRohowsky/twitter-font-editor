@@ -11,7 +11,7 @@ Use **𝗕𝗼𝗹𝗱**, *𝐼𝑡𝑎𝑙𝑖𝑐*, and <ins>Underlined</ins> 
 your Twitter (X) posts to make text **𝗕𝗼𝗹𝗱**, *𝐼𝑡𝑎𝑙𝑖𝑐*, and <ins>Underlined</ins>.
 
 
-👉 Get it now [for Chrome](https://chromewebstore.google.com/detail/x-twitter-post-text-edito/dgcfmccdeggjhkpndikcanaobhkggffd) 
+👉 Get it here [for Chrome](https://chromewebstore.google.com/detail/x-twitter-post-text-edito/dgcfmccdeggjhkpndikcanaobhkggffd) 
 
 Made by [maxontech](https://twitter.com/max_on_tech)
 
