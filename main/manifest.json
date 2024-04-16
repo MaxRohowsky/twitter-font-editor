@@ -2,7 +2,7 @@
   "name": "X (Twitter) Post Text Editor - Bold, Italic, Underline",
   "description": "Enables bold, italic, and underlined text in Twitter posts!",
   "manifest_version": 3,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "action": {},
   "permissions": [
     "tabs",

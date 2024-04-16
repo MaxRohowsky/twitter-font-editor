@@ -33,8 +33,13 @@
       const svgItalic = '<svg class="twitter-post-editor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M128 64c0-17.7 14.3-32 32-32H352c17.7 0 32 14.3 32 32s-14.3 32-32 32H293.3L160 416h64c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H90.7L224 96H160c-17.7 0-32-14.3-32-32z"/></svg>'
       const svgUnderline = '<svg class="twitter-post-editor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M16 64c0-17.7 14.3-32 32-32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H128V224c0 53 43 96 96 96s96-43 96-96V96H304c-17.7 0-32-14.3-32-32s14.3-32 32-32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H384V224c0 88.4-71.6 160-160 160s-160-71.6-160-160V96H48C30.3 96 16 81.7 16 64zM0 448c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32z"/></svg>'
 
+      // XPath for the Home Parent
+      const HOME_PARENT = '//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div[2]/div[1]/div/div/div/div[2]/div[2]/div[2]/div/div/nav/div';
+      const HOME_INJECTION_TARGET = 'div[data-testid="toolBar"] nav[aria-live="polite"][role="navigation"] div div[data-testid="ScrollSnap-SwipeableList"] div[role="tablist"][data-testid="ScrollSnap-List"]';
+
       // XPath for the Post Parent
       const POST_PARENT = '//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div/div[3]/div[2]';
+      const POST_INJECTION_TARGET = 'div[aria-labelledby="modal-header"] nav[aria-live="polite"][role="navigation"] div[role="tablist"][data-testid="ScrollSnap-List"]';
 
       // Vars
       let selectionObj;
@@ -43,6 +48,31 @@
       // Listen for Messages from Background
       chrome.runtime.onMessage.addListener((obj, sender, response) => {
             const { type } = obj;
+            if (debug) console.log("Type: ", type);
+
+            // Check if User is on the Home Page
+            if (type === "HOME") {
+                  if (debug) console.log("HOME")
+
+                  // Inject Buttons
+                  let homeCount = setInterval(() => {
+
+                        let homeParent = document.evaluate(HOME_PARENT, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+                        let editorExistsHOME = $('div#twitter-post-editor-container-HOME').length > 0;
+                        if (debug) console.log("Editor Exists in HOME: " + editorExistsHOME);
+
+                        // If the home window is shown, inject the font editor buttons
+                        if (homeParent && !editorExistsHOME) {
+                              if (debug) console.log(`Element has ${homeParent.children.length} children`);
+                              injectEditor(HOME_INJECTION_TARGET, type);
+
+                        } else {
+                              if (debug) console.log('Element not found or editor already exists');
+                              clearInterval(homeCount);
+                        }
+                  }, 800);
+
+            }
 
             // Check if User is making a new Post
             if (type === "POST") {
@@ -52,34 +82,34 @@
                   let postCount = setInterval(() => {
 
                         let postParent = document.evaluate(POST_PARENT, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+                        let editorExistsPOST = $('div#twitter-post-editor-container-POST').length > 0;
+                        if (debug) console.log("Editor Exists in POST: " + editorExistsPOST);
 
                         // If the post window is shown, inject the font editor buttons
-                        if (postParent) {
+                        if (postParent && !editorExistsPOST) {
                               if (debug) console.log(`Element has ${postParent.children.length} children`);
-                              injectEditor();
+
+                              injectEditor(POST_INJECTION_TARGET, type);
 
                         } else {
-                              if (debug) console.log('Element not found');
+                              if (debug) console.log('Element not found or editor already exists');
                               clearInterval(postCount);
                         }
                   }, 800);
-
             }
       });
 
 
       // If the editor is not injected, inject it
-      function injectEditor() {
-            let editorExists = $('div#twitter-post-editor-container').length > 0;
-            if (debug) console.log("Editor Exists: " + editorExists);
+      function injectEditor(injectionTarget, type) {
 
-            let injectionTarget = $('div[aria-labelledby="modal-header"] nav[aria-live="polite"][role="navigation"] div[role="tablist"][data-testid="ScrollSnap-List"]');
-            let injectionTargetExists = injectionTarget.length > 0;
+            let evaluatedTarget = $(injectionTarget); // injectionTarget is a String not a jQuery Object because it needs to be evaluated at this point in the script
+            let injectionTargetExists = evaluatedTarget.length > 0;
             if (debug) console.log("Injection Target Exists: " + injectionTargetExists);
 
             // Build the font editor and add event listener
-            if (!editorExists && injectionTargetExists) {
-                  buildEditor(injectionTarget);
+            if (injectionTargetExists) {
+                  buildEditor(evaluatedTarget, type);
                   addEventListener();
             }
       }
@@ -88,48 +118,46 @@
       function addEventListener() {
             $(document).off('selectionchange').on('selectionchange', () => {
                   selectionObj = window.getSelection();
-                  
+
                   if (selectionObj.toString().length > 1) {
-                        $('#twitter-post-editor-bold').addClass('twitter-post-editor-active');
-                        $('#twitter-post-editor-italic').addClass('twitter-post-editor-active');
-                        $('#twitter-post-editor-underline').addClass('twitter-post-editor-active');
-                  } 
-                  
+                        $('.twitter-post-editor-bold').addClass('twitter-post-editor-active');
+                        $('.twitter-post-editor-italic').addClass('twitter-post-editor-active');
+                        $('.twitter-post-editor-underline').addClass('twitter-post-editor-active');
+                  }
+
                   if (selectionObj.toString().length === 0) {
-                        $('#twitter-post-editor-bold').removeClass('twitter-post-editor-active');
-                        $('#twitter-post-editor-italic').removeClass('twitter-post-editor-active');
-                        $('#twitter-post-editor-underline').removeClass('twitter-post-editor-active');
+                        $('.twitter-post-editor-bold').removeClass('twitter-post-editor-active');
+                        $('.twitter-post-editor-italic').removeClass('twitter-post-editor-active');
+                        $('.twitter-post-editor-underline').removeClass('twitter-post-editor-active');
                   }
 
             });
       }
 
-      
+
 
       // Add the UI Elements to the DOM
-      function buildEditor(element) {
+      function buildEditor(element, type) {
             let container = element
-                  .attr('id', 'twitter-post-editor-container');
+                  .attr('id', 'twitter-post-editor-container-' + type)
+                  .addClass('twitter-post-editor-container');
 
             let boldBtn = $('<div>bold</div>')
-                  .attr('id', 'twitter-post-editor-bold')
-                  .addClass('twitter-post-editor-button')
+                  .addClass('twitter-post-editor-bold twitter-post-editor-button')
                   .html(svgBold)
-                  .on('click.namespace', boldBtnHandler)
+                  .on('mousedown', boldBtnHandler)
 
 
             let italicBtn = $('<div>italic</div>')
-                  .attr('id', 'twitter-post-editor-italic')
-                  .addClass('twitter-post-editor-button')
+                  .addClass('twitter-post-editor-italic twitter-post-editor-button')
                   .html(svgItalic)
-                  .on('click.namespace', italicBtnHandler)
+                  .on('mousedown', italicBtnHandler)
 
 
             let underlineBtn = $('<div>underline</div>')
-                  .attr('id', 'twitter-post-editor-underline')
-                  .addClass('twitter-post-editor-button')
+                  .addClass('twitter-post-editor-underline twitter-post-editor-button')
                   .html(svgUnderline)
-                  .on('click.namespace', underlineBtnHandler)
+                  .on('mousedown', underlineBtnHandler)
 
 
 
@@ -142,8 +170,6 @@
 
       function boldBtnHandler() {
             let outputText;
-
-            console.log('selectionObj', selectionObj.toString());
 
             // If entire selection is bold, make it normal
             if (isBoldUnicode(selectionObj.toString())) {

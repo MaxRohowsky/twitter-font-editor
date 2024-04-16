@@ -3,8 +3,13 @@
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
   // If the tab is fully loaded and the URL matches, send a message to the content script
+  if (changeInfo.status === 'complete' && tab.url && (tab.url.includes("twitter.com/home") || tab.url.includes("x.com/home"))) {
+    chrome.tabs.sendMessage(tabId, { type: "HOME" }).catch(error => console.error(`Send Message Error: ${error}`));
+  }
+
+  // If the tab is fully loaded and the URL matches, send a message to the content script
   if (changeInfo.status === 'complete' && tab.url && (tab.url.includes("twitter.com/compose/post") || tab.url.includes("x.com/compose/post"))) {
-    chrome.tabs.sendMessage(tabId, {type: "POST"}).catch(error => console.error(`Send Message Error: ${error}`));
+    chrome.tabs.sendMessage(tabId, { type: "POST" }).catch(error => console.error(`Send Message Error: ${error}`));
   }
 });
 
@@ -39,7 +44,7 @@ chrome.runtime.onInstalled.addListener((object) => {
 
     setTimeout(() => {
       if (tab.url && (tab.url.includes("twitter.com/compose/post") || tab.url.includes("x.com/compose/post"))) {
-      chrome.tabs.sendMessage(tab.id, {type: "POST"}).catch(error => console.error(`Send Message Error: ${error}`));
+        chrome.tabs.sendMessage(tab.id, { type: "POST" }).catch(error => console.error(`Send Message Error: ${error}`));
       }
 
     }, 4000);
@@ -66,9 +71,9 @@ chrome.runtime.onInstalled.addListener((object) => {
           if (currentTab.url.includes("twitter.com") || currentTab.url.includes("x.com")) {
             console.log("Injecting into tab: ", currentTab);
             injectIntoTab(currentTab);
-            
+
           }
-        } 
+        }
       }
     }
   );
