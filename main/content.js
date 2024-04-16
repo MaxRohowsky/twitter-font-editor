@@ -171,6 +171,8 @@
       function boldBtnHandler() {
             let outputText;
 
+            if (!selectionObj) return;
+
             // If entire selection is bold, make it normal
             if (isBoldUnicode(selectionObj.toString())) {
                   let regularText = '';
@@ -223,6 +225,8 @@
 
       function italicBtnHandler() {
             let outputText;
+
+            if (!selectionObj) return;
 
             // If entire selection is italic, make it normal
             if (isItalicUnicode(selectionObj.toString())) {
@@ -296,6 +300,9 @@
 
       function toUnderlineUnicode(str) {
             let underlineStr = '';
+
+            if (!selectionObj) return;
+
             for (let char of str) {
                   underlineStr += char + '\u0332';
             }
