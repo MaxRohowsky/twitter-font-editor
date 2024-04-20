@@ -1,7 +1,7 @@
 <!-- omit in toc -->
 # Twitter (X) Font Editor
 
-![Preview](preview-gif.gif)
+![Preview](preview-png.png)
 <br>
 <br>
 
@@ -28,6 +28,9 @@ Made by [maxontech](https://twitter.com/max_on_tech)
 
 When you make a new Twitter (X) post, you'll see three icons (**B**, *I*, <ins>U</ins>) at the top of the text field.
 Simply highlight the text you want to chage and click on the corresponding edit button.
+
+![Preview](preview-gif.gif)
+
 
 ## Opening the Extension
 
