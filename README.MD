@@ -1,7 +1,7 @@
 <!-- omit in toc -->
 # Twitter (X) Font Editor
 
-![Preview](preview.png)
+![Preview](preview-gif.gif)
 <br>
 <br>
 
