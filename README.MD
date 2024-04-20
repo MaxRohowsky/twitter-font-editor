@@ -29,7 +29,9 @@ Made by [maxontech](https://twitter.com/max_on_tech)
 When you make a new Twitter (X) post, you'll see three icons (**B**, *I*, <ins>U</ins>) at the top of the text field.
 Simply highlight the text you want to chage and click on the corresponding edit button.
 
-![Preview](preview-gif.gif)
+<p align="center">
+  <img src="preview-gif.gif" alt="Preview">
+</p>
 
 
 ## Opening the Extension
