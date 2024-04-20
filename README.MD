@@ -1,7 +1,9 @@
 <!-- omit in toc -->
 # Twitter (X) Font Editor
 
-![Preview](preview-png.png)
+<p align="center">
+  <img src="preview-png.png" alt="Preview">
+</p>
 <br>
 <br>
 
